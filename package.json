@@ -1,0 +1,14 @@
+{
+  "name": "learning_app",
+  "version": "1.0.0",
+  "description": "learning electron",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "huang sen",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.0.2"
+  }
+}
