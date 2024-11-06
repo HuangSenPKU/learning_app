@@ -1,5 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron/main')
-require('update-electron-app')()
+// require('update-electron-app')()
 const path = require('path')
 
 const createWindow = () => {
@@ -11,7 +11,7 @@ const createWindow = () => {
         }
     })
 
-    win.loadFile('index.html')
+    win.loadFile('map.html')
 }
 
 app.whenReady().then(() => {
