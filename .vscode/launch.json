@@ -27,6 +27,30 @@
         "args": [".", "--remote-debugging-port=9222"],
         "outputCapture": "std",
         "console": "integratedTerminal"
-      }
+      },
+      {
+        "name": "Debug Main Process",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/node_modules/.bin/electron",
+        "args": ["${workspaceFolder}/main.js"],
+        "cwd": "${workspaceFolder}",
+        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+        "windows": {
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
+        },
+        "outputCapture": "std",
+        "env": {
+            "ELECTRON_ENABLE_LOGGING": "true",
+            "ELECTRON_ENABLE_STACK_DUMPING": "true"
+        }
+    },
+    {
+        "name": "Debug Renderer Process",
+        "type": "chrome",
+        "request": "attach",
+        "port": 9222,
+        "webRoot": "${workspaceFolder}"
+    }
     ]
   }

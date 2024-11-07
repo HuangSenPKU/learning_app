@@ -7,7 +7,13 @@ const createWindow = () => {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
+            preload: path.join(__dirname, 'preload.js'),
+            webPreferences: {
+                nodeIntegration: true,
+                contextIsolation: false, // 设置为false以确保渲染进程可访问navigator对象
+                enableRemoteModule: true,
+                sandbox: false, // 禁用沙箱模式，允许访问Geolocation API
+            }
         }
     })
 
