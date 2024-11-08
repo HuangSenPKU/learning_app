@@ -8,26 +8,64 @@
     <title>鼠标拾取地图坐标</title>
     <style>
         html,
-        body,
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
         #container {
-          width: 100%;
-          height: 100%;
+            width: 50%;
+            height: 100%;
+            position: relative; /* 添加相对定位 */
+        }
+        .input-card {
+            position: absolute; /* 绝对定位 */
+            bottom: 20px; /* 距离底部 20px */
+            right: 20px; /* 距离左边 20px */
+            background-color: white; /* 背景色 */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* 添加 z-index */
+        }
+        #videoContainer {
+            width: 50%; /* 右侧视频占一半 */
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        video {
+            max-width: 90%;
+            max-height: 90%;
+            border: 1px solid #ccc;
         }
     </style>
 </head>
 <body>
-<div id="container" class="map"></div>
-<div class="input-card">
-    <h4>左击获取经纬度：</h4>
-    <div class="input-item">
-        <input type="text" readonly="true" id="lnglat">
+<div id="container" class="map">
+    <div class="input-card">
+        <h4>左击获取经纬度：</h4>
+        <div class="input-item">
+            <input type="text" readonly="true" id="lnglat">
+        </div>
     </div>
+</div>
+<div id="videoContainer">
+    <!-- 播放本地视频 -->
+    <video controls>
+        <source src="/Users/huangsen/code/my_electron_app/learning_app/video/test.mp4" type="video/mp4">
+    </video>
 </div>
 <!-- 加载地图JSAPI脚本 -->
 <script src="https://webapi.amap.com/maps?v=2.0&key=b0f541105509993417e3ba883571abd5"></script>
 <script type="text/javascript">
     var map = new AMap.Map("container", {
-        zoom: 15,
+        zoom: 18,
+        center: [116.163546,40.17992]
     });
     AMap.plugin('AMap.Geolocation', function() {
         var geolocation = new AMap.Geolocation({
